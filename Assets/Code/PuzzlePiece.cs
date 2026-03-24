@@ -1,63 +1,49 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Collider))] // 强制要求碰撞体，保证射线检测有效
+[RequireComponent(typeof(Collider2D))]
 public class PuzzlePiece : MonoBehaviour
 {
     [Header("拼图配置")]
-    [Tooltip("该拼图的正确世界坐标")]
-    public Vector3 correctPosition;          // 正确位置
-    [Tooltip("该拼图的正确旋转角度（绕Z轴）")]
-    public float correctRotationZ;           // 正确旋转角度
-    [Tooltip("吸附距离阈值（靠近多少自动吸附）")]
-    public float snapDistance = 0.5f;        // 吸附距离（建议0.3-0.8）
-    [Tooltip("旋转误差允许值（度）")]
+    public Vector3 correctPosition;          // 绝对正确位置
+    public float correctRotationZ;           // 正确旋转
+    public float snapDistance = 0.5f;        // 触发吸附的距离
     public float rotationTolerance = 5f;     // 旋转容错
 
-    [Header("状态标识")]
-    [HideInInspector] public bool isCorrect = false; // 是否拼对
+    [Header("状态")]
+    [HideInInspector] public bool isCorrect = false;
 
-    /// <summary>
-    /// 检查当前位置和旋转是否正确
-    /// </summary>
-    /// <returns>是否拼对</returns>
+    // 检查是否满足吸附条件
     public bool CheckIfCorrect()
     {
-        // 计算位置偏差（仅X/Y轴，忽略Z轴）
         float positionDiff = Vector2.Distance(
             new Vector2(transform.position.x, transform.position.y),
             new Vector2(correctPosition.x, correctPosition.y)
         );
-
-        // 计算旋转偏差（绕Z轴，处理360度循环）
         float rotationDiff = Mathf.Abs(Mathf.DeltaAngle(transform.eulerAngles.z, correctRotationZ));
-
-        // 位置和旋转都符合要求才算拼对
-        isCorrect = (positionDiff < snapDistance) && (rotationDiff < rotationTolerance);
-        return isCorrect;
+        return (positionDiff < snapDistance) && (rotationDiff < rotationTolerance);
     }
 
-    /// <summary>
-    /// 吸附到正确位置并修正旋转
-    /// </summary>
+    //  强制精准吸附：直接跳到正确位置，绝不停在原地
     public void SnapToCorrectPosition()
     {
-        // 固定Z轴，仅修正X/Y位置和Z轴旋转
-        transform.position = new Vector3(correctPosition.x, correctPosition.y, transform.position.z);
-        transform.rotation = Quaternion.Euler(0, 0, correctRotationZ);
-        isCorrect = true;
+        if (isCorrect) return;
 
-        // 触发拼对事件（供其他脚本监听）
-        PuzzleGameManager.Instance.OnPieceCorrect(this);
+        // 【关键】直接赋值正确位置+正确旋转，100%对齐
+        transform.position = correctPosition; 
+        transform.rotation = Quaternion.Euler(0, 0, correctRotationZ);
+        
+        isCorrect = true;
+        Debug.Log($"【精准吸附】{gameObject.name} 已完全贴合正确位置");
+
+        // 通知游戏管理器
+        if (PuzzleGameManager.Instance != null)
+            PuzzleGameManager.Instance.OnPieceCorrect(this);
     }
 
-    /// <summary>
-    /// 快速赋值：将当前位置设为正确位置（编辑器调试用）
-    /// </summary>
     [ContextMenu("当前位置设为正确位置")]
     public void SetCurrentPosAsCorrect()
     {
         correctPosition = transform.position;
         correctRotationZ = transform.eulerAngles.z;
-        Debug.Log($"{gameObject.name} 已将当前位置设为正确位置");
     }
 }
