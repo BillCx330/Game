@@ -18,6 +18,6 @@ public class jumpscene : MonoBehaviour
         
     }
     public void Jump(){
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 }
