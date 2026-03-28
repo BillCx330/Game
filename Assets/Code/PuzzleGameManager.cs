@@ -96,13 +96,14 @@ public class PuzzleGameManager : MonoBehaviour
     /// </summary>
     public void ResetGame()
     {
-        correctPieceCount = 0;
+         correctPieceCount = 0;
         winUI?.SetActive(false);
 
         // 重置所有拼图块状态
         foreach (PuzzlePiece piece in allPuzzlePieces)
         {
             piece.isCorrect = false;
+            piece.SetSortingOrder(3); // 新增：重置层级为3（未拼好）
             // 可选：将拼图块随机位置摆放（需自己扩展）
         }
 
@@ -113,4 +114,6 @@ public class PuzzleGameManager : MonoBehaviour
             mouseControl.enabled = true;
         }
     }
+
+    
 }

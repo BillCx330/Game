@@ -12,6 +12,33 @@ public class PuzzlePiece : MonoBehaviour
     [Header("状态")]
     [HideInInspector] public bool isCorrect = false;
 
+    private SpriteRenderer _spriteRenderer; // 新增：获取2D渲染组件
+
+    void Awake()
+    {
+        // 初始化SpriteRenderer（必选，2D拼图需挂载该组件）
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        if (_spriteRenderer == null)
+        {
+            Debug.LogError($"[{gameObject.name}] 缺少SpriteRenderer组件！");
+        }
+    }
+
+    void Start()
+    {
+        // 初始化层级：未拼好=3，拼好=2
+        SetSortingOrder(isCorrect ? 2 : 3);
+    }
+
+    // 新增：统一设置层级的方法
+    public void SetSortingOrder(int order)
+    {
+        if (_spriteRenderer != null)
+        {
+            _spriteRenderer.sortingOrder = order;
+        }
+    }
+
     // 检查是否满足吸附条件
     public bool CheckIfCorrect()
     {
@@ -23,19 +50,18 @@ public class PuzzlePiece : MonoBehaviour
         return (positionDiff < snapDistance) && (rotationDiff < rotationTolerance);
     }
 
-    //  强制精准吸附：直接跳到正确位置，绝不停在原地
+    // 强制精准吸附：拼好后层级设为2
     public void SnapToCorrectPosition()
     {
         if (isCorrect) return;
 
-        // 【关键】直接赋值正确位置+正确旋转，100%对齐
         transform.position = correctPosition; 
         transform.rotation = Quaternion.Euler(0, 0, correctRotationZ);
         
         isCorrect = true;
+        SetSortingOrder(2); // 拼好后层级=2
         Debug.Log($"【精准吸附】{gameObject.name} 已完全贴合正确位置");
 
-        // 通知游戏管理器
         if (PuzzleGameManager.Instance != null)
             PuzzleGameManager.Instance.OnPieceCorrect(this);
     }

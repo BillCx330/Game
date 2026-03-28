@@ -6,12 +6,12 @@ public class PuzzleDrag : MonoBehaviour
     private bool _isDrag;
     private Vector3 _offset;
     private float _zPos;
-    private readonly float rotateAngle = 90f; // 旋转角度
+    private readonly float rotateAngle = 90f;
 
     void Awake()
     {
         _puzzle = GetComponent<PuzzlePiece>();
-        _zPos = transform.position.z; // 固定Z轴，防止错位
+        _zPos = transform.position.z;
     }
 
     void OnMouseDown()
@@ -22,6 +22,7 @@ public class PuzzleDrag : MonoBehaviour
         mouseWorld.z = _zPos;
         _offset = transform.position - mouseWorld;
         _isDrag = true;
+        _puzzle.SetSortingOrder(4); // 选中时设为4
     }
 
     void OnMouseDrag()
@@ -40,14 +41,16 @@ public class PuzzleDrag : MonoBehaviour
 
         if (_puzzle.CheckIfCorrect())
         {
-            _puzzle.SnapToCorrectPosition();
+            _puzzle.SnapToCorrectPosition(); // 拼好自动设为2
+        }
+        else
+        {
+            _puzzle.SetSortingOrder(3); // 未拼好恢复为3
         }
     }
 
-    // 新增：右键旋转（通过OnMouseOver检测鼠标悬浮+右键点击）
     void OnMouseOver()
     {
-        // 只在鼠标悬浮在拼图上、且拼图未拼对时，响应右键
         if (Input.GetMouseButtonDown(1) && !_puzzle.isCorrect)
         {
             transform.Rotate(0, 0, -rotateAngle, Space.World);
