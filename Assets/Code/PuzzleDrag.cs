@@ -44,7 +44,7 @@ public class PuzzleDrag : MonoBehaviour
         }
     }
 
-    // ✅ 新增：右键旋转（通过OnMouseOver检测鼠标悬浮+右键点击）
+    // 新增：右键旋转（通过OnMouseOver检测鼠标悬浮+右键点击）
     void OnMouseOver()
     {
         // 只在鼠标悬浮在拼图上、且拼图未拼对时，响应右键

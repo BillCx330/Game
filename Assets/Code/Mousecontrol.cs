@@ -32,7 +32,7 @@ public class Mousecontrol : MonoBehaviour
             draggedObject = null;
         }
 
-        // ✅ 右键按下：旋转拼图（核心新增/修复）
+        // 右键按下：旋转拼图（核心新增/修复）
         if (Input.GetMouseButtonDown(1) && draggedObject != null)
         {
             RotatePuzzleObject();
@@ -70,7 +70,7 @@ public class Mousecontrol : MonoBehaviour
         draggedObject.transform.position = targetPos;
     }
 
-    // ✅ 旋转拼图块（修复乱码+明确逻辑）
+    // 旋转拼图块（修复乱码+明确逻辑）
     void RotatePuzzleObject()
     {
         // 绕世界坐标系Z轴逆时针旋转90度（可改-90为90变成顺时针）
