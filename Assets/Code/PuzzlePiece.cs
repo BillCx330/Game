@@ -28,6 +28,7 @@ public class PuzzlePiece : MonoBehaviour
     {
         // 初始化层级：未拼好=3，拼好=2
         SetSortingOrder(isCorrect ? 2 : 3);
+        
     }
 
     // 新增：统一设置层级的方法
@@ -61,7 +62,7 @@ public class PuzzlePiece : MonoBehaviour
         isCorrect = true;
         SetSortingOrder(2); // 拼好后层级=2
         Debug.Log($"【精准吸附】{gameObject.name} 已完全贴合正确位置");
-
+        
         if (PuzzleGameManager.Instance != null)
             PuzzleGameManager.Instance.OnPieceCorrect(this);
     }

@@ -122,6 +122,10 @@ public class PuzzleGameManager : MonoBehaviour
             Debug.LogWarning("当前场景没有找到拼图块，请检查拼图是否挂载了PuzzlePiece脚本");
             return;
         }
+        if(Time.realtimeSinceStartup<2f){
+            Debug.Log("不判断胜利");
+        return;
+        }
 
         if (correctPieceCount >= allPuzzlePieces.Count)
         {

@@ -294,7 +294,7 @@ MonoBehaviour:
   - {fileID: 0}
   autoFindPieces: 1
   winUI: {fileID: 1380017526}
-  winSound: {fileID: 0}
+  winSound: {fileID: 8300000, guid: bfb0b4ce643e59846bd2a51252fc51f7, type: 3}
 --- !u!4 &395368464
 Transform:
   m_ObjectHideFlags: 0
