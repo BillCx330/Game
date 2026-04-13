@@ -616,7 +616,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u73A9\u5BB6\u62D6\u52A8\u788E\u7247\u62FC\u63A5\u5B8C\u6574\u56FE\u6848\uFF0C\u9650\u65F6\u5B8C\u6210\u5373\u53EF\u901A\u5173\u3002\u8BF7\u52FF\u4E71\u653E\u788E\u7247\uFF0C\u5408\u7406\u89C2\u5BDF\u8FB9\u7F18\u4F4D\u7F6E\uFF0C\u6B65\u6570\u8D8A\u5C11\u8BC4\u5206\u8D8A\u9AD8\uFF0C\u8DA3\u5473\u95EF\u5173\u953B\u70BC\u773C\u529B\u4E0E\u601D\u7EF4\u3002\r"
+  m_text: "\u73A9\u5BB6\u62D6\u52A8\u788E\u7247\u62FC\u63A5\u5B8C\u6574\u56FE\u6848\uFF0C\u5B8C\u6210\u5373\u53EF\u901A\u5173\u3002\u8BF7\u52FF\u4E71\u653E\u788E\u7247\uFF0C\u5408\u7406\u89C2\u5BDF\u8FB9\u7F18\u4F4D\u7F6E\uFF0C\u8DA3\u5473\u95EF\u5173\u953B\u70BC\u773C\u529B\u4E0E\u601D\u7EF4\u3002\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 818f6ae9590df1a4088376f604c00ad5, type: 2}
   m_sharedMaterial: {fileID: 6024825648927764866, guid: 818f6ae9590df1a4088376f604c00ad5, type: 2}
@@ -1042,52 +1042,6 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 940.58307, y: 514.0309, z: -8.13933}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &783032458
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 783032460}
-  - component: {fileID: 783032459}
-  m_Layer: 0
-  m_Name: MUsic
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &783032459
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 783032458}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d053008542d23d44c9d94b97e372e99b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  musicBtn: {fileID: 68690381}
-  bgMusic: {fileID: 1820681778}
---- !u!4 &783032460
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 783032458}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2335,7 +2289,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: dfc05bf3ee7cded4fbfccffa148840e5, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 4d8105d5cd1de3f43aac596d410ae037, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -2346,7 +2300,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 166.04626
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -3161,4 +3115,3 @@ SceneRoots:
   - {fileID: 204164967}
   - {fileID: 571827548}
   - {fileID: 1820681779}
-  - {fileID: 783032460}
