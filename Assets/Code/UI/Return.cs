@@ -18,6 +18,6 @@ public class Return : MonoBehaviour
     }
     public void JumpR()
     {
-        SceneManager.LoadScene(4);
+        SceneManager.LoadScene(0);
     }
 }

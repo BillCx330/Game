@@ -17,6 +17,6 @@ public class section3 : MonoBehaviour
         
     }
     public void Jump2(){
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(3);
     }
 }

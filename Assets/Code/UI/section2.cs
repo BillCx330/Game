@@ -18,6 +18,6 @@ public class section2 : MonoBehaviour
         
     }
     public void Jump1(){
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(4);
     }
 }

@@ -19,6 +19,6 @@ public class startsection : MonoBehaviour
 
     public void Jumps()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 }
