@@ -69,7 +69,7 @@ public class CloseImage : MonoBehaviour, IPointerClickHandler
         // 只响应左键点击
         if (eventData.button != PointerEventData.InputButton.Left) return;
 
-        Debug.Log($"✅ [{gameObject.name}] 关闭按钮被点击！开始跳转...", this);
+        Debug.Log($"[{gameObject.name}] 关闭按钮被点击！开始跳转...", this);
 
         // 安全清空单例
         if (PuzzleGameManager.Instance != null)
@@ -81,12 +81,14 @@ public class CloseImage : MonoBehaviour, IPointerClickHandler
         // 校验场景名
         if (string.IsNullOrEmpty(targetSceneName))
         {
-            Debug.LogError($"❌ [{gameObject.name}] targetSceneName为空！", this);
+            Debug.LogError($"[{gameObject.name}] targetSceneName为空！", this);
             return;
         }
 
         // 执行场景跳转
         SceneManager.LoadScene(targetSceneName);
-        Debug.Log($"🚀 跳转到场景：{targetSceneName}", this);
+        Debug.Log($"跳转到场景：{targetSceneName}", this);
     }
 }
+
+// AI 辅助生成：DeepSeek网页版, 2026-3-26）

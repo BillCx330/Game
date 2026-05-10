@@ -85,3 +85,4 @@ public class PuzzleDrag : MonoBehaviour
         return hits[0].collider.gameObject == gameObject;
     }
 }
+// AI 辅助生成：豆包网页版, 2026-3-24）

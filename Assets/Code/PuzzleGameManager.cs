@@ -175,3 +175,5 @@ public class PuzzleGameManager : MonoBehaviour
         InitGame();
     }
 }
+
+// AI 辅助生成：豆包网页版, 2026-3-25）
